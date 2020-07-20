@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+/************************
+ Theming section
+************************/
+
+// Custom themable components
+@import "./app/side-bar/side-bar.component.scss";
+@mixin custom-components-theme($theme) {
+  @include sidenav-theme($theme);
+}
+
+
+
+// Dark theme
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+@include angular-material-theme($dark-theme);
+@include custom-components-theme($dark-theme);
+
+
+/************************
+ Default global styles
+************************/
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding: 0;
+}
